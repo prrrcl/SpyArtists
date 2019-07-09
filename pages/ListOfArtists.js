@@ -9,8 +9,18 @@ function ListOfArtists(parent,artistName){
 ListOfArtists.prototype.generate = async function(){
   await this.connectToAPI();
   this.elements = `
-  <h1>Estás en listas de artistas</h1>
+  <section>
+  <ul>
   `;
+   this.artists.message.body.artist_list.forEach(artist=>{
+    this.elements += `
+    <li>${artist.artist.artist_name}</li>
+    `
+  });
+  this.elements += `
+  </ul>
+  </section>
+  `
   this.render();
 }
 ListOfArtists.prototype.render = function(){

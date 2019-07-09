@@ -6,7 +6,7 @@ function ArtistService(){
 ArtistService.prototype.getArtists = async function (artist){
   let response = await fetch(`${this.baseURL}artist.search?q_artist=${artist}&page_size=5${this.formatAndApiKey}`);
   let data = await response.json();
-  console.log(data);
+  return data;
 }
 
 
