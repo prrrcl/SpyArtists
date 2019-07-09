@@ -5,8 +5,10 @@ function main(){
   let layoutInstance = null;
   let root = document.querySelector('#root');
 
+  generateLayout();
+
   function generateLayout () {
-    layoutInstance = new layoutInstance(root);
+    layoutInstance = new Layout(root);
     layoutInstance.generate();
   }
 }
