@@ -8,6 +8,7 @@ function main(){
 
   generateLayout();
   generateHeader();
+  activateRouter();
 
   function generateLayout () {
     layoutInstance = new Layout(root);
@@ -16,6 +17,9 @@ function main(){
   function generateHeader (){
     headerInstance = new Header(layoutInstance.header, 'SpyArtists');
     headerInstance.generate();
+  }
+  function activateRouter(){
+    routerInstance.buildDOM(ENTRY_POINT, layoutInstance.main);
   }
 }
 window.addEventListener('load', main);
