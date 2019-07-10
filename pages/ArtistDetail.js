@@ -6,9 +6,12 @@ function ArtistDetail(parent, artist) {
   this.elements = null;
   this.albums = null;
   this.albumsInfo = null;
+  this.loading = null;
 }
 
 ArtistDetail.prototype.generate = async function () {
+  this.loading = new Loading(this.parent);
+  this.loading.generate();
   await this.connectToAPI();
   console.log(this.albums)
   this.elements = `

@@ -1,11 +1,13 @@
-@import url('https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap");
 
 /* ---- reset ---- */
 
 html {
   box-sizing: border-box;
 }
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
@@ -14,64 +16,58 @@ body {
   padding: 0;
 }
 
-
 /* ---- typography ---- */
 
 body {
   color: #111;
-  font-family: 'Quicksand', sans-serif;
+  font-family: "Quicksand", sans-serif;
   font-size: 16px;
   line-height: 147%;
 }
 
-h1 {}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
 
-h2 {}
+h1 {
+}
 
-h3 {}
+h2 {
+}
+
+h3 {
+}
 
 p {
   margin: 0;
 }
 
-
-
 /* ---- layout ---- */
 
-#site-header {
-  padding: 30px 0;
-  color: white;
-  background: #111;
+#root {
+display: grid; 
+grid-template-columns: 1fr ; 
+grid-template-rows: 1fr 1fr 1fr ; 
+grid-column-gap: 0px;
+grid-row-gap: 0px; 
 }
-
-#site-footer {
-  color: white;
-  padding: 60px 0;
-  background: #111;
+#main-header {
+  grid-area: 1 / 1 / 2 / 2;
 }
-
-#site-main {
-  margin-bottom: 60px;
+#main {
+  grid-area: 2 / 1 / 3 / 2;
 }
-
-.container {
-  margin: 0 20px;
+#main-footer {
+  grid-area: 3 / 1 / 4 / 2; 
 }
-
-.section {
-  margin-bottom: 20px;
-  padding-top: 20px;
-}
-
-@media (min-width: 768px) {
-  .container {
-    max-width: 728px;
-    margin: 0 auto;
-  }
-}
-
-
-
 
 /* ---- components ---- */
 
@@ -79,7 +75,7 @@ p {
   width: 100%;
   background-color: blue;
   color: #fff;
-  border: 1px solid #fff
+  border: 1px solid #fff;
 }
 
 .button-alt {
@@ -88,4 +84,3 @@ p {
 }
 
 /* ---- section ---- */
-

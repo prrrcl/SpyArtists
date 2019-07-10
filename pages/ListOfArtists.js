@@ -5,9 +5,13 @@ function ListOfArtists(parent, artistName) {
   this.artistName = artistName;
   this.artists = null;
   this.details = null;
+  this.loading = null;
 }
 
 ListOfArtists.prototype.generate = async function () {
+  this.loading = new Loading(this.parent);
+  this.loading.generate();
+  
   await this.connectToAPI();
   this.elements = `
   <section>
@@ -30,6 +34,7 @@ ListOfArtists.prototype.render = function () {
 }
 ListOfArtists.prototype.connectToAPI = async function () {
   this.artists = await artistServiceInstance.getArtists(this.artistName);
+  console.log(this.artists)
 }
 ListOfArtists.prototype.addEventListeners = function () {
   let anchors = document.querySelectorAll('.artist-found');
