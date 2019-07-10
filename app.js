@@ -49,10 +49,11 @@ function main() {
   }
   function changeBg() {
     let bgs = [
-      './assets/imgs/1.jpeg',
-      './assets/imgs/2.jpeg',
-      './assets/imgs/3.jpeg',
-      './assets/imgs/4.jpeg',
+      './assets/imgs/5.jpg',
+      './assets/imgs/1.jpg',
+      './assets/imgs/2.jpg',
+      './assets/imgs/3.jpg',
+      './assets/imgs/4.jpg',
     ];
     let classes = [
       'fade-in',
