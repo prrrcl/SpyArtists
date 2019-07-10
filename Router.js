@@ -12,8 +12,8 @@ Router.prototype.buildDOM = function (url, parent, artist) {
     case '/artistslist':
       this.generateListArtistsPage(parent, artist);
       break;
-    case '/viewsong':
-      this.generateViewSongPage(parent);
+    case '/viewartist':
+      this.generateViewArtistPage(parent, artist);
       break;
     default:
       this.generateLandingPage(parent);
@@ -25,6 +25,10 @@ Router.prototype.generateLandingPage = function (parent){
 }
 Router.prototype.generateListArtistsPage = function(parent, artist){
   this.page = new ListOfArtists(parent, artist);
+  this.page.generate();
+}
+Router.prototype.generateViewArtistPage = function(parent, artist){
+  this.page = new ArtistDetail(parent, artist);
   this.page.generate();
 }
 

@@ -1,6 +1,6 @@
 'use strict';
 
-function main(){
+function main() {
   const ENTRY_POINT = '/';
   let layoutInstance = null;
   let headerInstance = null;
@@ -13,30 +13,31 @@ function main(){
   activateRouter();
   listenerSearch();
 
-  function generateLayout () {
+  function generateLayout() {
     layoutInstance = new Layout(root);
     layoutInstance.generate();
   }
-  function generateHeader (){
+  function generateHeader() {
     headerInstance = new Header(layoutInstance.header, 'SpyArtists');
     headerInstance.generate();
   }
-  function generateFooter(){
+  function generateFooter() {
     footerInstance = new Footer(layoutInstance.footer);
     footerInstance.generate();
   }
-  function activateRouter(){
+  function activateRouter() {
     routerInstance.buildDOM(ENTRY_POINT, layoutInstance.main);
   }
-  function listenerSearch(){
+  function listenerSearch() {
     let btn = document.querySelector('.search-btn');
-    btn.addEventListener('click',changeUrl);
+    btn.addEventListener('click', changeUrl);
   }
-  function changeUrl(event){
+  function changeUrl(event) {
     event.preventDefault();
     let url = event.target.attributes.url.value;
     let input = document.querySelector('.search-input').value;
-    routerInstance.buildDOM(url, layoutInstance.main, input)
+    routerInstance.buildDOM(url, layoutInstance.main, input);
   }
+  
 }
 window.addEventListener('load', main);
