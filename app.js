@@ -12,13 +12,13 @@ function main() {
   generateFooter();
   activateRouter();
   listenerSearch();
-//  changeBg();
+  changeBg();
   function generateLayout() {
     layoutInstance = new Layout(root);
     layoutInstance.generate();
   }
   function generateHeader() {
-    headerInstance = new Header(layoutInstance.header, 'SpyArtists');
+    headerInstance = new Header(layoutInstance.header, 'SpyArtists',`Search all album's from your favourite artist's`);
     headerInstance.generate();
   }
   function generateFooter() {
@@ -34,9 +34,18 @@ function main() {
   }
   function changeUrl(event) {
     event.preventDefault();
+    
     let url = event.target.attributes.url.value;
     let input = document.querySelector('.search-input').value;
-    routerInstance.buildDOM(url, layoutInstance.main, input);
+    console.log(input);
+    if(input !== ''){
+      routerInstance.buildDOM(url, layoutInstance.main, input);
+    }else{
+      let error = document.querySelector('.error');
+      error.setAttribute('style','padding: 8px;background: rgba(0, 0, 0, 0.8);');
+      error.innerHTML = 'Por favor, introduce un artista';
+    }
+    
   }
   function changeBg() {
     let bgs = [

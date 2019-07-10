@@ -51,6 +51,13 @@ h3 {
 p {
   margin: 0;
 }
+ul{
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 0;
+}
 
 /* ---- layout ---- */
 #bg {
@@ -72,17 +79,59 @@ p {
 #main-header {
   opacity: 0;
   margin-top: 80px;
-  animation: appearLogo .5s cubic-bezier(0.6, 0.15, 0.4, 1) .3s forwards;
+  animation: appearLogo 0.5s cubic-bezier(0.6, 0.15, 0.4, 1) 0.3s forwards;
+}
+#main-header h1 {
+  font-size: 48px;
+  text-align: center;
+}
+#main-header h3 {
+  font-size: 12px;
+  font-weight: 400;
+  margin-top: 20px;
+  opacity: 0;
+  animation: appearContent 0.5s cubic-bezier(0.6, 0.15, 0.4, 1) 1.5s forwards;
+  position: relative;
+}
+#main-header h3:after {
+  content: "";
+  position: absolute;
+  height: 1px;
+  width: 100%;
+  background: white;
+  transform-origin: left;
+  left: -10px;
+  top: 50%;
+  animation: lineAnim 10s cubic-bezier(0.6, 0.15, 0.4, 1) 1.5s infinite;
+}
+#main-header h3:before {
+  content: "";
+  position: absolute;
+  height: 1px;
+  width: 100%;
+  background: white;
+  transform-origin: right;
+  right: -10px;
+  top: 50%;
+  animation: lineAnim 10s cubic-bezier(0.6, 0.15, 0.4, 1) 1.5s infinite;
 }
 #main {
   opacity: 0;
-  animation: appearContent .5s cubic-bezier(0.6, 0.15, 0.4, 1) 1s forwards;
+  animation: appearContent 0.5s cubic-bezier(0.6, 0.15, 0.4, 1) 1s forwards;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 #main section {
   display: flex;
   flex-direction: column;
 }
+#main h3{
+  margin: 0 0 25px;
+}
 #main-footer {
+  margin-bottom: 30px;
 }
 
 /* ---- components ---- */
@@ -98,9 +147,58 @@ p {
   color: blue;
   background-color: #fff;
 }
-
+.loading {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  z-index: 9999;
+  background: white;
+  color: black;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  animation: appearContent 0.5s cubic-bezier(0.6, 0.15, 0.4, 1) 0s forwards;
+}
+.loading p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.error {
+  color: red;
+  text-align: center;
+}
 /* ---- section ---- */
-
+.list-artists {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 80%;
+}
+.list-artists li {
+  background: rgba(0, 0, 0, .3);
+  text-align: center;
+  margin: 10px;
+  transition: 0.5s cubic-bezier(0.6, 0.15, 0.4, 1) .1s;
+}
+.list-artists li:hover {
+  transform: scale(1.1);
+  transition: 0.5s cubic-bezier(0.6, 0.15, 0.4, 1) .1s;
+  background: rgba(255, 255, 255, 1);
+}
+.list-artists li:hover a {
+  color: black;
+  transition: 0.5s cubic-bezier(0.6, 0.15, 0.4, 1) .1s;
+}
+.list-artists li a{
+  color: white;
+  display: block;
+  padding:10px 20px;
+  text-decoration: none;
+  transition: 0.5s cubic-bezier(0.6, 0.15, 0.4, 1) .1s;
+}
 /* ----- Animations ----- */
 .search-input {
   border: none;
@@ -138,7 +236,7 @@ p {
   -webkit-transform: scaleX(1);
   transform: scaleX(1);
 }
-.search-btn:hover::after{
+.search-btn:hover::after {
   opacity: 1;
 }
 .search-btn:before {
@@ -159,19 +257,19 @@ p {
   -webkit-transition-timing-function: cubic-bezier(0.6, 0.15, 0.4, 1);
   transition-timing-function: cubic-bezier(0.6, 0.15, 0.4, 1);
 }
-.search-btn:after{
-  content: 'Buscar';
+.search-btn:after {
+  content: "Buscar";
   opacity: 0;
   text-align: center;
   text-decoration: none;
   color: white;
   font-weight: 700;
   padding: 10px;
-  transition: 0.3s cubic-bezier(0.77,s 0, 0.175, 1) 0.6s;
+  transition: 0.3s cubic-bezier(0.77, s 0, 0.175, 1) 0.6s;
   position: absolute;
   top: 0;
-  width:100%;
-  height:100%;
+  width: 100%;
+  height: 100%;
   left: 0;
 }
 
@@ -201,21 +299,38 @@ p {
   transition-delay: 1.5s;
 }
 
-@keyframes appearLogo{
-  0%{
-    opacity:0;
+@keyframes appearLogo {
+  0% {
+    opacity: 0;
     margin-top: 80px;
   }
-  100%{
+  100% {
     opacity: 1;
     margin-top: 100px;
   }
 }
-@keyframes appearContent{
-  0%{
+@keyframes appearContent {
+  0% {
     opacity: 0;
   }
-  100%{
+  100% {
     opacity: 1;
+  }
+}
+@keyframes lineAnim {
+  0% {
+    transform: scaleX(-0.2);
+  }
+  30% {
+    transform: scaleX(-0.1);
+  }
+  60% {
+    transform: scaleX(-0.14);
+  }
+  80% {
+    transform: scaleX(-0.05);
+  }
+  100% {
+    transform: scaleX(-0.2);
   }
 }

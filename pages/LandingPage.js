@@ -10,6 +10,7 @@ LandingPage.prototype.generate = function () {
     <section>
       <input class="search-input" name="item" placeholder="Busca un artista" autocomplete="off">
       <a href="#" class="search-btn" url="/artistslist">Buscar</a>
+      <p class="error"></p>
     </section>
   `
   this.render();

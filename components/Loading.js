@@ -9,7 +9,9 @@ function Loading(parent) {
 
 Loading.prototype.generate = function(){
   this.elements = `
+  <div class="loading">
     <p>Cargando...</p>
+  </div>
   `;
   this.render();
 }

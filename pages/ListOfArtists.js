@@ -14,8 +14,8 @@ ListOfArtists.prototype.generate = async function () {
   
   await this.connectToAPI();
   this.elements = `
-  <section>
-  <ul>
+  <h3>Lista de artistas</h3>
+  <ul class="list-artists">
   `;
   this.artists.message.body.artist_list.forEach(artist => {
     this.elements += `
@@ -24,7 +24,6 @@ ListOfArtists.prototype.generate = async function () {
   });
   this.elements += `
   </ul>
-  </section>
   `
   this.render();
   this.addEventListeners();

@@ -15,7 +15,7 @@ ArtistDetail.prototype.generate = async function () {
   await this.connectToAPI();
   console.log(this.albums)
   this.elements = `
-    <section>
+    <section class="artist-page">
       <h3>Albums</h3>
       `
   this.albums.message.body.album_list.forEach(album=>{
