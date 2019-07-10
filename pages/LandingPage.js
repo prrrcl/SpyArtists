@@ -8,8 +8,7 @@ function LandingPage(parent) {
 LandingPage.prototype.generate = function () {
   this.elements = `
     <section>
-      <h3>Esto es la Landing</h3>
-      <input class="search-input" name="item" placeholder="Busca un artista">
+      <input class="search-input" name="item" placeholder="Busca un artista" autocomplete="off">
       <a href="#" class="search-btn" url="/artistslist">Buscar</a>
     </section>
   `

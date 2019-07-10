@@ -12,7 +12,7 @@ function main() {
   generateFooter();
   activateRouter();
   listenerSearch();
-
+//  changeBg();
   function generateLayout() {
     layoutInstance = new Layout(root);
     layoutInstance.generate();
@@ -38,6 +38,45 @@ function main() {
     let input = document.querySelector('.search-input').value;
     routerInstance.buildDOM(url, layoutInstance.main, input);
   }
-  
+  function changeBg() {
+    let bgs = [
+      './assets/imgs/1.jpeg',
+      './assets/imgs/2.jpeg',
+      './assets/imgs/3.jpeg',
+      './assets/imgs/4.jpeg',
+    ];
+    let classes = [
+      'fade-in',
+      'fade',
+      'fade-out',
+      'fade2-in',
+      'fade2',
+      'fade2-out'
+    ]
+    let body = document.querySelector('#bg');
+    let counterBgs = 0;
+    let counterCls = 0;
+    let duration = 2000;
+    setInterval(() => {
+      counterBgs++;
+      if(counterBgs === bgs.length){
+        counterBgs = 0;
+      }
+      body.setAttribute('style', `background-image: url(${bgs[counterBgs]})`);
+    }, duration * 3);
+
+    setInterval(()=>{
+      body.classList.remove(classes[counterCls]);
+      counterCls++;
+      if(counterCls === classes.length){
+        counterCls = 0;
+      }
+      body.classList.add(classes[counterCls]);
+    },duration)
+    
+    
+
+  }
+
 }
 window.addEventListener('load', main);
