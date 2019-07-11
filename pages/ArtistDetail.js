@@ -17,10 +17,11 @@ ArtistDetail.prototype.generate = async function () {
   this.elements = `
     <section class="artist-page">
       <h3>Albums</h3>
+      <section class="cards-container">
       `
-  this.albums.forEach( album =>{
+  this.albums.forEach( (album, index) =>{
     this.elements += `
-    <article class="card-album">
+    <article class="card-album card-album-${(index+1)}">
       <h4>${album.album.album_name}</h4>
       <img src="${album.cover.images[0].image}">
     </article>
@@ -28,6 +29,7 @@ ArtistDetail.prototype.generate = async function () {
   })
 
   this.elements += `
+      </section>
     </section>
   `
   this.render();
