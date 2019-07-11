@@ -194,6 +194,10 @@ ul{
   left: 50%;
   transform: translate(-50%, -50%);
 }
+.dots{
+  top:calc(50% + 10px) !important;
+  font-size: 24px;
+}
 .error {
   color: red;
   text-align: center;
@@ -239,14 +243,13 @@ ul{
   align-items:center;
 }
 .cards-container{
-  width:50%;
+  width:80%;
   display: grid;
   gap:10px;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
   grid-template-areas:  "item-1 item-2 item-3 item-4 item-5 "
                         "item-6 item-7 item-8 item-9 item-10"
-                        "item-11 item-12 item-13 item-14 item-15";
 }
 @media(max-width:768px){
   .cards-container{
@@ -255,7 +258,13 @@ ul{
     width: 90%;                     
     }
 }
-.card-album{
+@media (max-width:1024px){
+  .cards-container{
+    display: flex;
+    flex-direction: column; 
+    width: 60%; 
+  }
+}.card-album{
   position: relative;
   cursor: pointer;
   transition: 0.3s cubic-bezier(0.6, 0.15, 0.4, 1) .1s;
