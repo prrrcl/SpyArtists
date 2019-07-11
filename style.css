@@ -4,6 +4,7 @@
 
 html {
   box-sizing: border-box;
+  height: 100%;
 }
 *,
 *:before,
@@ -14,6 +15,7 @@ html {
 body {
   margin: 0;
   padding: 0;
+  height:100%;
 }
 
 /* ---- typography ---- */
@@ -63,7 +65,7 @@ ul{
 /* ---- layout ---- */
 #bg {
   background-size: cover;
-  height: 100vh;
+  height: 100%;
   width: 100%;
   position: absolute;
   z-index: -1;
@@ -71,9 +73,16 @@ ul{
   left: 0;
   animation: bgAnimation 3s linear 0s;
 }
+#bg:after{
+  width: 100%;
+  height:100%;
+  background: rgba(0, 0, 0, .5);
+  position: absolute;
+  content:'';
+}
 #root {
   display: flex;
-  height: 100vh;
+  height: 100%;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
@@ -82,6 +91,7 @@ ul{
   opacity: 0;
   margin-top: 80px;
   animation: appearLogo 0.5s cubic-bezier(0.6, 0.15, 0.4, 1) 0.3s forwards;
+  cursor: pointer;
 }
 #main-header h1 {
   font-size: 48px;
@@ -237,6 +247,13 @@ ul{
   grid-template-areas:  "item-1 item-2 item-3 item-4"
                         "item-5 item-6 item-7 item-8"
                         "item-9 item-10 item-11 item-12";
+}
+@media(max-width:768px){
+  .cards-container{
+    grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-areas: "item-1" "item-2" "item-3" "item-4" "item-5" "item-6" "item-7" "item-8" "item-9" "item-10" "item-11" "item-12";
+  }
 }
 .card-album{
   position: relative;

@@ -11,11 +11,16 @@ DetailArtistService.prototype.getAlbums = async function (idArtist){
 
   let albumsWithCovers = await Promise.all(arrayOfAlbums.map(async (album) => {
     let mbid = album.album.album_mbid;
-    let cover = await this.getAlbumCover(mbid)
-    album.cover = cover;
-    return album;
+    if(mbid) {
+      let cover = await this.getAlbumCover(mbid)
+      album.cover = cover;
+      return album;
+    } else {
+      album.cover = {images:[{image:'./assets/imgs/undefined.jpg'}]};
+      return album;
+    }
+
   }))
-  console.log(albumsWithCovers);
   return albumsWithCovers;
 }
 DetailArtistService.prototype.getAlbumInfo = async function (idAlbum){

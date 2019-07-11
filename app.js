@@ -13,6 +13,7 @@ function main() {
   activateRouter();
   listenerSearch();
   changeBg();
+  backHombe();
   function generateLayout() {
     layoutInstance = new Layout(root);
     layoutInstance.generate();
@@ -32,12 +33,17 @@ function main() {
     let btn = document.querySelector('.search-btn');
     btn.addEventListener('click', changeUrl);
   }
+  function backHombe(){
+    let header = document.querySelector('#main-header');
+    header.addEventListener('click', ()=>{
+      location.reload();
+    })
+  }
   function changeUrl(event) {
     event.preventDefault();
     
     let url = event.target.attributes.url.value;
     let input = document.querySelector('.search-input').value;
-    console.log(input);
     if(input !== ''){
       routerInstance.buildDOM(url, layoutInstance.main, input);
     }else{
