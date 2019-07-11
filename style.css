@@ -242,23 +242,28 @@ ul{
   width:50%;
   display: grid;
   gap:10px;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
-  grid-template-areas:  "item-1 item-2 item-3 item-4"
-                        "item-5 item-6 item-7 item-8"
-                        "item-9 item-10 item-11 item-12";
+  grid-template-areas:  "item-1 item-2 item-3 item-4 item-5 "
+                        "item-6 item-7 item-8 item-9 item-10"
+                        "item-11 item-12 item-13 item-14 item-15";
 }
 @media(max-width:768px){
   .cards-container{
-    grid-template-columns: 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-template-areas: "item-1" "item-2" "item-3" "item-4" "item-5" "item-6" "item-7" "item-8" "item-9" "item-10" "item-11" "item-12";
-  }
+    display: flex;
+    flex-direction: column; 
+    width: 90%;                     
+    }
 }
 .card-album{
   position: relative;
   cursor: pointer;
   transition: 0.3s cubic-bezier(0.6, 0.15, 0.4, 1) .1s;
+}
+@media(max-width:768px){
+  .card-album{
+    margin: 10px;
+  }
 }
 .card-album:hover{
   transform: scale(1.15);
