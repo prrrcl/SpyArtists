@@ -9,6 +9,12 @@ DetailArtistService.prototype.getAlbums = async function (idArtist){
   let data = await response.json();
   let arrayOfAlbums = data.message.body.album_list;
 
+  let albumsWithCoversAndInfo = await Promise.all(arrayOfAlbums.map(async (album)=>{
+    let id = album.album.album_id;
+    let albumInfo = await this.getAlbumInfo(id);
+    album.info = albumInfo;
+    return album;
+  }))
   let albumsWithCovers = await Promise.all(arrayOfAlbums.map(async (album) => {
     let mbid = album.album.album_mbid;
     if(mbid) {
@@ -19,14 +25,13 @@ DetailArtistService.prototype.getAlbums = async function (idArtist){
       album.cover = {images:[{image:'./assets/imgs/undefined.jpg'}]};
       return album;
     }
-
   }))
+ console.log(albumsWithCovers)
   return albumsWithCovers;
 }
 DetailArtistService.prototype.getAlbumInfo = async function (idAlbum){
-  let response = await fetch(`${this.baseURL}album.get?album_id=${idAlbum}${this.formatAndApiKey}`)
+  let response = await fetch(`${this.baseURL}album.tracks.get?album_id=${idAlbum}${this.formatAndApiKey}`)
   let data = await response.json();
-  
   return data;
 }
 DetailArtistService.prototype.getAlbumCover = async function (id){

@@ -15,7 +15,7 @@ html {
 body {
   margin: 0;
   padding: 0;
-  height:100%;
+  height: 100%;
 }
 
 /* ---- typography ---- */
@@ -52,9 +52,9 @@ h3 {
 
 p {
   margin: 0;
-  font-size:12px;
+  font-size: 12px;
 }
-ul{
+ul {
   margin-block-start: 0;
   margin-block-end: 0;
   margin-inline-start: 0px;
@@ -73,12 +73,12 @@ ul{
   left: 0;
   animation: bgAnimation 3s linear 0s;
 }
-#bg:after{
+#bg:after {
   width: 100%;
-  height:100%;
-  background: rgba(0, 0, 0, .5);
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
   position: absolute;
-  content:'';
+  content: "";
 }
 #root {
   display: flex;
@@ -106,12 +106,12 @@ ul{
   animation: appearContent 0.5s cubic-bezier(0.6, 0.15, 0.4, 1) 1.5s forwards;
   position: relative;
 }
-@media(max-width:768px){
-  #main-header h1{
+@media (max-width: 768px) {
+  #main-header h1 {
     font-size: 40px;
   }
-  #main-header h3{
-    margin-top:10px;
+  #main-header h3 {
+    margin-top: 10px;
   }
 }
 #main-header h3:after {
@@ -144,23 +144,23 @@ ul{
   align-items: center;
   width: 100%;
 }
-@media (max-width:768px){
-  #main{
-    padding-top:25px;
+@media (max-width: 768px) {
+  #main {
+    padding-top: 25px;
   }
 }
- section {
+section {
   display: flex;
   flex-direction: column;
 }
-#main h3{
+#main h3 {
   margin: 0 0 25px;
 }
 #main-footer {
   margin-bottom: 30px;
 }
-#main-footer section p{
-  font-size:12px
+#main-footer section p {
+  font-size: 12px;
 }
 
 /* ---- components ---- */
@@ -194,8 +194,8 @@ ul{
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.dots{
-  top:calc(50% + 10px) !important;
+.dots {
+  top: calc(50% + 10px) !important;
   font-size: 24px;
 }
 .error {
@@ -210,140 +210,196 @@ ul{
   justify-content: space-between;
   width: 80%;
 }
-@media (max-width:768px){
-  .list-artists{
+@media (max-width: 768px) {
+  .list-artists {
     flex-direction: column;
     width: 100%;
   }
 }
 .list-artists li {
-  background: rgba(0, 0, 0, .3);
+  background: rgba(0, 0, 0, 0.3);
   text-align: center;
   margin: 10px;
-  transition: 0.5s cubic-bezier(0.6, 0.15, 0.4, 1) .1s;
+  transition: 0.5s cubic-bezier(0.6, 0.15, 0.4, 1) 0.1s;
 }
 .list-artists li:hover {
   transform: scale(1.1);
-  transition: 0.5s cubic-bezier(0.6, 0.15, 0.4, 1) .1s;
+  transition: 0.5s cubic-bezier(0.6, 0.15, 0.4, 1) 0.1s;
   background: rgba(255, 255, 255, 1);
 }
 .list-artists li:hover a {
   color: black;
-  transition: 0.5s cubic-bezier(0.6, 0.15, 0.4, 1) .1s;
+  transition: 0.5s cubic-bezier(0.6, 0.15, 0.4, 1) 0.1s;
 }
-.list-artists li a{
+.list-artists li a {
   color: white;
   display: block;
-  padding:10px 20px;
+  padding: 10px 20px;
   text-decoration: none;
-  transition: 0.5s cubic-bezier(0.6, 0.15, 0.4, 1) .1s;
+  transition: 0.5s cubic-bezier(0.6, 0.15, 0.4, 1) 0.1s;
 }
-.artist-page{
+.artist-page {
   width: 100%;
-  align-items:center;
+  align-items: center;
 }
-.cards-container{
-  width:80%;
+.cards-container {
+  width: 80%;
   display: grid;
-  gap:10px;
+  gap: 10px;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  grid-template-areas:  "item-1 item-2 item-3 item-4 item-5 "
-                        "item-6 item-7 item-8 item-9 item-10"
+  grid-template-areas:
+    "item-1 item-2 item-3 item-4 item-5 "
+    "item-6 item-7 item-8 item-9 item-10";
 }
-@media(max-width:768px){
-  .cards-container{
+@media (max-width: 768px) {
+  .cards-container {
     display: flex;
-    flex-direction: column; 
-    width: 90%;                     
-    }
-}
-@media (max-width:1024px){
-  .cards-container{
-    display: flex;
-    flex-direction: column; 
-    width: 60%; 
+    flex-direction: column;
+    width: 90%;
   }
 }
-.card-album{
+@media (max-width: 1024px) {
+  .cards-container {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+  }
+}
+.card-album {
   position: relative;
   cursor: pointer;
-  transition: 0.3s cubic-bezier(0.6, 0.15, 0.4, 1) .1s;
+  transition: 0.3s cubic-bezier(0.6, 0.15, 0.4, 1) 0.1s;
   display: flex;
   align-items: center;
 }
-@media(max-width:768px){
-  .card-album{
+@media (max-width: 768px) {
+  .card-album {
     margin: 10px;
   }
 }
-.card-album:hover{
+.card-album:hover {
   transform: scale(1.15);
-  transition: 0.3s cubic-bezier(0.6, 0.15, 0.4, 1) .1s;
+  transition: 0.3s cubic-bezier(0.6, 0.15, 0.4, 1) 0.1s;
 }
-.card-album::after{
-  content:'';
+.card-album::after {
+  content: "";
   width: 100%;
-  height:100%;
-  background: rgba(0, 0, 0, .8);
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
   opacity: 0;
   position: absolute;
   z-index: 5;
   top: 0;
-  left:0;
-  transition: 0.3s cubic-bezier(0.6, 0.15, 0.4, 1) .05s;
+  left: 0;
+  transition: 0.3s cubic-bezier(0.6, 0.15, 0.4, 1) 0.05s;
 }
-.card-album:hover h4{
+.card-album:hover h4,
+.card-album:hover h6 {
   opacity: 1;
-  transition: 0.5s cubic-bezier(0.6, 0.15, 0.4, 1) .1s;
+  transition: 0.5s cubic-bezier(0.6, 0.15, 0.4, 1) 0.1s;
 }
-.card-album:hover::after{
-  opacity:1;
-  transition: 0.3s cubic-bezier(0.6, 0.15, 0.4, 1) .05s;
+.card-album:hover::after {
+  opacity: 1;
+  transition: 0.3s cubic-bezier(0.6, 0.15, 0.4, 1) 0.05s;
 }
-.card-album h4{
+.card-album h4,
+.card-album h6 {
   position: absolute;
-  top:0;
+  top: 0;
   left: 0;
   z-index: 10;
-  top:50%;
-  text-align:center;
+  top: 50%;
+  text-align: center;
   left: 50%;
-  transform: translate(-50%,-50%);
-  opacity:0;
-  transition: 0.5s cubic-bezier(0.6, 0.15, 0.4, 1) .1s;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: 0.5s cubic-bezier(0.6, 0.15, 0.4, 1) 0.1s;
 }
-.card-album-1{
+.card-album .tracklist {
+  position: absolute;
+  top:0;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content:center;
+  font-size:12px;
+  background: white;
+  color: black;
+  padding: 15px;
+  list-style: none;
+  transition: 0.5s cubic-bezier(0.6, 0.15, 0.4, 1) 0.1s;
+}
+.card-album.opened .tracklist{
+  top:-100%;
+  opacity: 1;
+  transition: 0.5s cubic-bezier(0.6, 0.15, 0.4, 1) 0.1s;
+}
+.card-album .tracklist li{
+  text-align: center
+}
+div.tracklist {
+  display: none !important;
+}
+.card-album h6 {
+  top: calc(100% - 25px);
+}
+.card-album-1 {
   grid-area: item-1;
 }
-.card-album-2 { grid-area: item-2; }
+.card-album-2 {
+  grid-area: item-2;
+}
 
-.card-album-3 { grid-area: item-3; }
+.card-album-3 {
+  grid-area: item-3;
+}
 
-.card-album-4 { grid-area: item-4; }
+.card-album-4 {
+  grid-area: item-4;
+}
 
-.card-album-5 { grid-area: item-5; }
+.card-album-5 {
+  grid-area: item-5;
+}
 
-.card-album-6 { grid-area: item-6; }
+.card-album-6 {
+  grid-area: item-6;
+}
 
-.card-album-7 { grid-area: item-7; }
+.card-album-7 {
+  grid-area: item-7;
+}
 
-.card-album-8 { grid-area: item-8; }
+.card-album-8 {
+  grid-area: item-8;
+}
 
-.card-album-9 { grid-area: item-9; }
+.card-album-9 {
+  grid-area: item-9;
+}
 
-.card-album-10 { grid-area: item-10; }
+.card-album-10 {
+  grid-area: item-10;
+}
 
-.card-album-11 { grid-area: item-11; }
+.card-album-11 {
+  grid-area: item-11;
+}
 
-.card-album-12 { grid-area: item-12; }
+.card-album-12 {
+  grid-area: item-12;
+}
 
-.card-album img{
+.card-album img {
   width: 100%;
   opacity: 0;
-  animation: appearImg .3s cubic-bezier(0.6, 0.15, 0.4, 1) .4s forwards;
+  animation: appearImg 0.3s cubic-bezier(0.6, 0.15, 0.4, 1) 0.4s forwards;
 }
-.image-loading{
+.image-loading {
   text-align: center;
 }
 /* ----- Animations ----- */
@@ -367,12 +423,12 @@ ul{
   -moz-box-shadow: 0px 4px 0px 0px rgba(255, 255, 255, 1);
   box-shadow: 0px 4px 0px 0px rgba(255, 255, 255, 1);
 }
-@media(max-width:768px){
-  .search-input{
-    border-bottom:2px solid white;
+@media (max-width: 768px) {
+  .search-input {
+    border-bottom: 2px solid white;
     box-shadow: none;
   }
-  .search-input:focus{
+  .search-input:focus {
     box-shadow: none;
   }
 }
@@ -491,22 +547,22 @@ ul{
     transform: scaleX(-0.2);
   }
 }
-@keyframes bgAnimation{
-  0%{
+@keyframes bgAnimation {
+  0% {
     background-position-x: 0%;
   }
-  100%{
+  100% {
     background-position-x: 100%;
   }
 }
-@keyframes appearImg{
-  0%{
+@keyframes appearImg {
+  0% {
     transform: translateY(-10px);
     opacity: 0;
   }
-  100%{
+  100% {
     transform: translateY(0px);
-    opacity:1;
+    opacity: 1;
   }
 }
 @keyframes lds-eclipse {
