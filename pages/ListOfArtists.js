@@ -33,7 +33,6 @@ ListOfArtists.prototype.render = function () {
 }
 ListOfArtists.prototype.connectToAPI = async function () {
   this.artists = await artistServiceInstance.getArtists(this.artistName);
-  console.log(this.artists)
 }
 ListOfArtists.prototype.addEventListeners = function () {
   let anchors = document.querySelectorAll('.artist-found');

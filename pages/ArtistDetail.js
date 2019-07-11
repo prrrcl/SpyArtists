@@ -6,6 +6,7 @@ function ArtistDetail(parent, artist) {
   this.elements = null;
   this.albums = null;
   this.albumsInfo = null;
+  this.albumImg = null;
   this.loading = null;
 }
 
@@ -13,15 +14,15 @@ ArtistDetail.prototype.generate = async function () {
   this.loading = new Loading(this.parent);
   this.loading.generate();
   await this.connectToAPI();
-  console.log(this.albums)
   this.elements = `
     <section class="artist-page">
       <h3>Albums</h3>
       `
-  this.albums.message.body.album_list.forEach(album=>{
+  this.albums.forEach( album =>{
     this.elements += `
-    <article>
+    <article class="card-album">
       <h4>${album.album.album_name}</h4>
+      <img src="${album.cover.images[0].image}">
     </article>
     `;
   })
@@ -32,11 +33,12 @@ ArtistDetail.prototype.generate = async function () {
   this.render();
 }
 ArtistDetail.prototype.render = function () {
-
   this.parent.innerHTML = this.elements;
 }
 
 ArtistDetail.prototype.connectToAPI = async function () {
   this.albums = await detailArtistServiceInstance.getAlbums(this.artist);
-  // this.albumsInfo = await detailArtistServiceInstance.getAlbumInfo(); Falta añadir el id
+}
+ArtistDetail.prototype.getCover =  async function(id){
+  this.albumImg = await detailArtistServiceInstance.getAlbumCover(id);
 }
