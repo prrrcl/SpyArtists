@@ -18,7 +18,7 @@ ArtistDetail.prototype.generate = async function () {
   this.elements = `
     <section class="artist-page">
       <h3>Albums</h3>
-      <p><small>Pulsa en el álbum para ver el tracklist</small></p>
+      <p class="desc-feature"><small>Pulsa en el álbum para ver el tracklist</small></p>
       <section class="cards-container">
       `
   this.albums.forEach( (album, index) => {
