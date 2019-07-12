@@ -19,10 +19,29 @@ ListOfArtists.prototype.generate = async function () {
   <ul class="list-artists">
   `;
   this.artists.forEach(artist => {
+    var snippet = artist.info.query.search[0];
+    if(snippet !== undefined){
 
-    this.elements += `
-    <li><a class="artist-found" href="#" url="/viewartist" data-id="${artist.artist.artist_id}">${artist.artist.artist_name}</a></li>
-    `
+      this.elements += `
+      <li>
+      <a class="artist-found" href="#" url="/viewartist" data-id="${artist.artist.artist_id}">${artist.artist.artist_name}</a>
+      <div class="artist-info">
+        <p>${snippet.snippet}...</p>
+      </div>
+      </li>
+      `
+    }else{
+      this.elements += `
+      <li>
+      <a class="artist-found" href="#" url="/viewartist" data-id="${artist.artist.artist_id}">${artist.artist.artist_name}</a>
+      <div class="artist-info">
+      <p>
+        Artista sin información disponible.
+        </p>
+      </div>
+      </li>
+      `
+    }
   });
   this.elements += `
   </ul>
