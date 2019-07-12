@@ -61,13 +61,6 @@ ArtistDetail.prototype.generate = async function () {
       loading[index].remove();
     }
   })
-
-  
-
-  // setTimeout(() => {
-  // }, 3000);
-
-
 }
 ArtistDetail.prototype.render = function () {
   this.parent.innerHTML = this.elements;

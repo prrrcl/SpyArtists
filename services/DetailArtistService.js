@@ -26,7 +26,6 @@ DetailArtistService.prototype.getAlbums = async function (idArtist){
       return album;
     }
   }))
- console.log(albumsWithCovers)
   return albumsWithCovers;
 }
 DetailArtistService.prototype.getAlbumInfo = async function (idAlbum){

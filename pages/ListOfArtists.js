@@ -6,6 +6,7 @@ function ListOfArtists(parent, artistName) {
   this.artists = null;
   this.details = null;
   this.loading = null;
+  this.artistInfo = null;
 }
 
 ListOfArtists.prototype.generate = async function () {
@@ -17,7 +18,8 @@ ListOfArtists.prototype.generate = async function () {
   <h3>Lista de artistas</h3>
   <ul class="list-artists">
   `;
-  this.artists.message.body.artist_list.forEach(artist => {
+  this.artists.forEach(artist => {
+
     this.elements += `
     <li><a class="artist-found" href="#" url="/viewartist" data-id="${artist.artist.artist_id}">${artist.artist.artist_name}</a></li>
     `
@@ -33,6 +35,10 @@ ListOfArtists.prototype.render = function () {
 }
 ListOfArtists.prototype.connectToAPI = async function () {
   this.artists = await artistServiceInstance.getArtists(this.artistName);
+}
+ListOfArtists.prototype.artistDetails = async function(artist){
+  artist.replace(/ /g, '%20');
+  this.artistInfo = await artistServiceInstance.getDetailsArtis(artist);
 }
 ListOfArtists.prototype.addEventListeners = function () {
   let anchors = document.querySelectorAll('.artist-found');
