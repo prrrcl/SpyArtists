@@ -1,22 +1,21 @@
 'use strict';
 
-function LandingPage(parent) {
-  this.parent = parent;
-  this.elements = null;
+class LandingPage{
+  constructor(parent){
+    this.parent = parent;
+    this.elements = null;
+  }
+  generate(){
+    this.elements = `
+      <section>
+        <input class="search-input" name="item" placeholder="Busca un artista" autocomplete="off">
+        <a href="#" class="search-btn" url="/artistslist">Buscar</a>
+        <p class="error"></p>
+      </section>
+    `
+    this.render();
+  }
+  render(){
+    this.parent.innerHTML = this.elements;
+  }
 }
-
-LandingPage.prototype.generate = function () {
-  this.elements = `
-    <section>
-      <input class="search-input" name="item" placeholder="Busca un artista" autocomplete="off">
-      <a href="#" class="search-btn" url="/artistslist">Buscar</a>
-      <p class="error"></p>
-    </section>
-  `
-  this.render();
-}
-LandingPage.prototype.render = function () {
-
-  this.parent.innerHTML = this.elements;
-}
-
