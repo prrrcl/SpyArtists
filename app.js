@@ -5,7 +5,7 @@ function main() {
   let layoutInstance = null;
   let headerInstance = null;
   let footerInstance = null;
-  let root = document.querySelector('#root');
+  const root = document.querySelector('#root');
 
   generateLayout();
   generateHeader();
@@ -19,7 +19,7 @@ function main() {
     layoutInstance.generate();
   }
   function generateHeader() {
-    headerInstance = new Header(layoutInstance.header, 'SpyArtists',`Search all album's from your favourite artist's`);
+    headerInstance = new Header(layoutInstance.header, 'SpyArtists', `Search all album's from your favourite artist's`);
     headerInstance.generate();
   }
   function generateFooter() {
@@ -30,38 +30,38 @@ function main() {
     routerInstance.buildDOM(ENTRY_POINT, layoutInstance.main);
   }
   function listenerSearch() {
-    let btn = document.querySelector('.search-btn');
+    const btn = document.querySelector('.search-btn');
     btn.addEventListener('click', changeUrl);
   }
-  function backHombe(){
-    let header = document.querySelector('#main-header');
-    header.addEventListener('click', ()=>{
+  function backHombe() {
+    const header = document.querySelector('#main-header');
+    header.addEventListener('click', () => {
       location.reload();
     })
   }
   function changeUrl(event) {
     event.preventDefault();
-    
-    let url = event.target.attributes.url.value;
-    let input = document.querySelector('.search-input').value;
-    if(input !== ''){
+
+    const url = event.target.attributes.url.value;
+    const input = document.querySelector('.search-input').value;
+    if (input !== '') {
       routerInstance.buildDOM(url, layoutInstance.main, input);
-    }else{
-      let error = document.querySelector('.error');
-      error.setAttribute('style','padding: 8px;background: rgba(0, 0, 0, 0.8);');
+    } else {
+      const error = document.querySelector('.error');
+      error.setAttribute('style', 'padding: 8px;background: rgba(0, 0, 0, 0.8);');
       error.innerHTML = 'Por favor, introduce un artista';
     }
-    
+
   }
   function changeBg() {
-    let bgs = [
+    const bgs = [
       './assets/imgs/5.jpg',
       './assets/imgs/1.jpg',
       './assets/imgs/2.jpg',
       './assets/imgs/3.jpg',
       './assets/imgs/4.jpg',
     ];
-    let classes = [
+    const classes = [
       'fade-in',
       'fade',
       'fade-out',
@@ -69,30 +69,26 @@ function main() {
       'fade2',
       'fade2-out'
     ]
-    let body = document.querySelector('#bg');
+    const body = document.querySelector('#bg');
     let counterBgs = 0;
     let counterCls = 0;
-    let duration = 2000;
+    const duration = 2000;
     setInterval(() => {
       counterBgs++;
-      if(counterBgs === bgs.length){
+      if (counterBgs === bgs.length) {
         counterBgs = 0;
       }
       body.setAttribute('style', `background-image: url(${bgs[counterBgs]})`);
     }, duration * 3);
 
-    setInterval(()=>{
+    setInterval(() => {
       body.classList.remove(classes[counterCls]);
       counterCls++;
-      if(counterCls === classes.length){
+      if (counterCls === classes.length) {
         counterCls = 0;
       }
       body.classList.add(classes[counterCls]);
-    },duration)
-    
-    
-
+    }, duration)
   }
-
 }
 window.addEventListener('load', main);
